@@ -24,6 +24,7 @@
     color:var(--ink);
     background:var(--page);
     line-height:1.55;
+    overflow-x:hidden;
   }
   a{color:var(--navy);}
 
@@ -36,14 +37,18 @@
   }
   .topnav-inner{
     max-width:960px; margin:0 auto;
-    display:flex; align-items:center; justify-content:space-between;
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+    row-gap:8px;
     padding:12px 24px;
   }
-  .topnav-name{font-weight:700; color:var(--navy); font-size:15px; letter-spacing:.02em;}
-  .topnav-links{display:flex; gap:22px;}
+  .topnav-name{
+    font-weight:700; color:var(--navy); font-size:15px; letter-spacing:.02em;
+    text-decoration:none; white-space:nowrap; cursor:pointer;
+  }
+  .topnav-links{display:flex; flex-wrap:wrap; gap:22px;}
   .topnav-links a{
     font-size:13px; font-weight:600; color:var(--ink-secondary);
-    text-decoration:none; text-transform:uppercase; letter-spacing:.04em;
+    text-decoration:none; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap;
   }
   .topnav-links a:hover{color:var(--navy);}
   .print-btn{
@@ -192,6 +197,17 @@
     .job-dates{font-size:12.5px;}
     .early-row{flex-direction:column; gap:2px; align-items:flex-start;}
     .early-dates{margin-top:1px;}
+
+    .topnav-inner{padding:10px 16px;}
+    .topnav-name{font-size:14px;}
+    .topnav-links{order:3; width:100%; gap:16px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:2px;}
+    .topnav-links a{font-size:11px;}
+    .print-btn{padding:5px 11px; font-size:12px;}
+  }
+  @media (max-width:480px){
+    .stat-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:24px;}
+    .topnav-name{font-size:13px;}
   }
   @media (max-width:900px) and (min-width:721px){
     .skills-grid{grid-template-columns:repeat(2,1fr);}
@@ -210,11 +226,11 @@
   }
 </style>
 </head>
-<body>
+<body id="top">
 
 <nav class="topnav">
   <div class="topnav-inner">
-    <div class="topnav-name">MOHIT DILWARIA</div>
+    <a href="#top" class="topnav-name">MOHIT DILWARIA</a>
     <div class="topnav-links">
       <a href="#summary">Summary</a>
       <a href="#highlights">Highlights</a>
