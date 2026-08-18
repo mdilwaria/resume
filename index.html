@@ -66,7 +66,7 @@
   }
   .hero-inner{max-width:960px; margin:0 auto;}
   .hero h1{
-    margin:0 0 6px; font-size:36px; font-weight:700; letter-spacing:.01em;
+    margin:0 0 6px; font-size:40px; font-weight:700; letter-spacing:.01em;
   }
   .hero .title{font-size:17px; font-weight:500; color:#CBD8ED; margin:0 0 18px;}
   .hero .contact{display:flex; flex-wrap:wrap; gap:18px; font-size:14px; color:#DCE6F5;}
@@ -78,7 +78,7 @@
   section{padding-top:48px;}
   section:first-of-type{padding-top:40px;}
   h2.section-title{
-    font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+    font-size:18px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
     color:var(--navy); margin:0 0 18px;
     padding-bottom:10px; border-bottom:2px solid var(--navy-tint);
   }
@@ -95,16 +95,13 @@
   .summary-block .summary-text{margin:0;}
 
   .tag-row{
-    display:flex; flex-wrap:wrap; row-gap:5px;
+    display:grid; grid-template-columns:repeat(3,max-content); column-gap:24px; row-gap:7px;
+    justify-content:start;
     margin-top:14px; padding-top:12px; border-top:1px solid rgba(31,56,100,0.12);
     font-size:11px; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
     color:var(--navy); opacity:.75; line-height:1.5;
   }
-  .tag-chip{white-space:nowrap;}
-  .tag-chip:not(:last-child)::after{
-    content:"·"; display:inline-block; color:var(--ink-muted);
-    opacity:.6; text-transform:none; font-weight:400; margin:0 9px;
-  }
+  .tag-chip{white-space:nowrap; text-align:left;}
 
   /* ---------- Stat tiles ---------- */
   .stat-grid{
@@ -169,11 +166,13 @@
   .job li:last-child{margin-bottom:0;}
 
   .early-career h3{font-size:14px; color:var(--navy); margin:0 0 12px;}
-  .early-row{display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 12px; padding:8px 0; border-bottom:1px dashed var(--border); font-size:13.5px;}
-  .early-row:last-child{border-bottom:none;}
-  .early-role{color:var(--ink); font-weight:600;}
-  .early-org{color:var(--ink-muted);}
-  .early-dates{color:var(--ink-muted); white-space:nowrap;}
+  .early-career{display:grid; grid-template-columns:max-content 1fr max-content; column-gap:16px; font-size:13.5px;}
+  .early-career h3{grid-column:1/-1;}
+  .early-row{display:contents;}
+  .early-role{color:var(--ink); font-weight:600; padding:8px 0; border-bottom:1px dashed var(--border); white-space:nowrap;}
+  .early-org{color:var(--ink-muted); padding:8px 0; border-bottom:1px dashed var(--border);}
+  .early-dates{color:var(--ink-muted); white-space:nowrap; padding:8px 0; border-bottom:1px dashed var(--border); text-align:right;}
+  .early-row:last-child .early-role, .early-row:last-child .early-org, .early-row:last-child .early-dates{border-bottom:none;}
 
   /* ---------- Certifications ---------- */
   .cert-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px 24px; margin-top:6px;}
@@ -195,8 +194,14 @@
     .job{padding:16px 16px;}
     .job-role{font-size:15px;}
     .job-dates{font-size:12.5px;}
-    .early-row{flex-direction:column; gap:2px; align-items:flex-start;}
+    .early-career{display:block;}
+    .early-row{display:flex; flex-direction:column; gap:2px; align-items:flex-start; padding:8px 0; border-bottom:1px dashed var(--border);}
+    .early-row:last-child{border-bottom:none;}
+    .early-role, .early-org, .early-dates{padding:0; border-bottom:none; text-align:left;}
+    .early-role{white-space:normal;}
     .early-dates{margin-top:1px;}
+    .tag-row{grid-template-columns:1fr;}
+    .tag-chip{white-space:normal;}
 
     .topnav-inner{padding:10px 16px;}
     .topnav-name{font-size:14px;}
@@ -206,13 +211,14 @@
   }
   @media (max-width:480px){
     .stat-grid{grid-template-columns:1fr;}
-    .hero h1{font-size:24px;}
+    .hero h1{font-size:27px;}
     .topnav-name{font-size:13px;}
   }
   @media (max-width:900px) and (min-width:721px){
     .skills-grid{grid-template-columns:repeat(2,1fr);}
-    .hero h1{font-size:28px;}
+    .hero h1{font-size:31px;}
     .topnav-links{gap:14px;}
+    .tag-row{grid-template-columns:repeat(2,max-content);}
   }
 
   /* ---------- Print ---------- */
@@ -245,7 +251,7 @@
 <header class="hero">
   <div class="hero-inner">
     <h1>Mohit Dilwaria</h1>
-    <p class="title">Technology &amp; Product Leader — Program Management, Data &amp; API Platforms</p>
+    <p class="title">Engineering Leader — Data Platforms &amp; API Architecture</p>
     <div class="contact">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>408.300.4143</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke="none"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>mohit.dilwaria@gmail.com</span>
@@ -261,10 +267,10 @@
     <h2 class="section-title">Professional Summary</h2>
     <div class="summary-block">
       <p class="summary-text">
-        Technology and product leader with 24+ years turning complex data and platform programs into measurable business outcomes — including a <strong>$35M</strong> data lake migration and a <strong>$10M</strong> enterprise API platform built from the ground up. Trusted advisor to CTOs and VPs, with a track record of scaling high-performing global teams and driving agile transformations that lift delivery velocity <strong>20–25%</strong>. Technical roots run deep: started as a data architect, still writes code today (JavaScript, Python, C++), and has built an independent venture alongside enterprise-scale programs.
+        Engineering leader who builds and runs the systems large enterprises actually depend on — architecting data platforms, API layers, and delivery pipelines, then building the teams that keep them reliable. Still writes code, still reviews it, and still makes the hard architecture calls instead of just managing around them. Has taken over systems in rough shape — brittle deployments, sprawling legacy data warehouses, fragile integrations — and rebuilt them into platforms other engineers want to build on. Outside the corporate world, applied that same instinct to build an independent venture from scratch.
       </p>
       <div class="tag-row">
-        <span class="tag-chip">Technology &amp; Product Leadership</span><span class="tag-chip">Program &amp; Portfolio Management</span><span class="tag-chip">Data Engineering &amp; Warehousing</span><span class="tag-chip">API &amp; Microservices Strategy</span><span class="tag-chip">Enterprise Agile Transformation</span><span class="tag-chip">Offshore/Onsite Team Management</span>
+        <span class="tag-chip">Engineering Leadership</span><span class="tag-chip">Data Engineering &amp; Warehousing</span><span class="tag-chip">API &amp; Microservices Strategy</span><span class="tag-chip">CI/CD &amp; Reliability Engineering</span><span class="tag-chip">Program &amp; Portfolio Management</span><span class="tag-chip">Offshore/Onsite Team Management</span>
       </div>
     </div>
   </section>
@@ -272,14 +278,14 @@
   <section id="highlights">
     <h2 class="section-title">Career Highlights</h2>
     <div class="stat-grid">
-      <div class="stat-tile"><div class="stat-value">$35M</div><div class="stat-label">Saved over 3 years leading a Hadoop Data Lake migration at CSAA ($50M projected over 5)</div></div>
-      <div class="stat-tile"><div class="stat-value">$10M</div><div class="stat-label">Annual API platform portfolio owned at CSAA, leading 9 direct + 30+ influenced</div></div>
+      <div class="stat-tile"><div class="stat-value">50%→&lt;10%</div><div class="stat-label">Amazon deployment failure rate cut through CI/CD &amp; operational readiness</div></div>
+      <div class="stat-tile"><div class="stat-value">25%</div><div class="stat-label">Incident rate reduction from API governance &amp; reliability standards at CSAA</div></div>
+      <div class="stat-tile"><div class="stat-value">$35M</div><div class="stat-label">Saved over 3 years architecting a Hadoop Data Lake migration at CSAA ($50M projected over 5)</div></div>
+      <div class="stat-tile"><div class="stat-value">$10M</div><div class="stat-label">Enterprise API platform architected &amp; owned at CSAA, leading 9 engineers/architects directly</div></div>
       <div class="stat-tile"><div class="stat-value">$8–10M</div><div class="stat-label">Annual maintenance saved by decommissioning a legacy data warehouse at CSAA</div></div>
       <div class="stat-tile"><div class="stat-value">93.75%</div><div class="stat-label">Faster chart processing automating Apple's Official iTunes Charts (4 hrs → 15 min)</div></div>
-      <div class="stat-tile"><div class="stat-value">50%→&lt;10%</div><div class="stat-label">Amazon deployment failure rate cut through CI/CD &amp; operational readiness</div></div>
-      <div class="stat-tile"><div class="stat-value">25%</div><div class="stat-label">Reduction in incident rates and improvement in delivery timelines via API governance at CSAA</div></div>
-      <div class="stat-tile"><div class="stat-value">20–25%</div><div class="stat-label">Delivery velocity improvement from enterprise agile transformations</div></div>
-      <div class="stat-tile"><div class="stat-value">24+ yrs</div><div class="stat-label">Spanning data architecture, program management, and product/platform leadership</div></div>
+      <div class="stat-tile"><div class="stat-value">20–25%</div><div class="stat-label">Delivery velocity improvement from engineering process &amp; architecture changes</div></div>
+      <div class="stat-tile"><div class="stat-value">24+ yrs</div><div class="stat-label">Spanning data architecture, engineering management, and platform leadership</div></div>
     </div>
   </section>
 
@@ -309,12 +315,12 @@
           <div class="job-dates">Nov 2021 – May 2024</div>
         </div>
         <ul>
-          <li>Owned a $10M annual portfolio for the enterprise API platform, leading a blended onshore/offshore delivery team of 3 Product Managers, 1 Scrum Master, 5 engineers and 1 architect directly, and influencing 5 Product Managers, 25+ engineers and 5 architects across MyPolicy, Claims, and MyQuote products.</li>
           <li>Defined the multi-year API platform vision, operating model, and standards for CSAA, built on RESTful and event-driven architectures with SQL and NoSQL distributed data design, integrating Claims, Policy, Digital, UBI, and Commercial lines of business into a unified enterprise API platform.</li>
-          <li>Led strategic planning and execution of API product roadmaps and RESTful services, enabling faster partner onboarding and delivering a 20% improvement in efficiency and a 50% reduction in data latency across key digital journeys.</li>
-          <li>Ran weekly steering forums with Senior Directors and quarterly reviews with the VP of Data, VP of Digital, and VP of Commercial Apps, driving alignment on priorities, trade-offs, and risk mitigation across business and technology.</li>
           <li>Established API governance, standards, and KPI frameworks adopted across multiple business units, improving platform reliability, reducing incident rates by 25%, and streamlining release cycles by 20%.</li>
+          <li>Owned a $10M annual portfolio for the enterprise API platform, leading a blended onshore/offshore delivery team of 3 Product Managers, 1 Scrum Master, 5 engineers and 1 architect directly, and influencing 5 Product Managers, 25+ engineers and 5 architects across MyPolicy, Claims, and MyQuote products.</li>
+          <li>Led strategic planning and execution of API product roadmaps and RESTful services, enabling faster partner onboarding and delivering a 20% improvement in efficiency and a 50% reduction in data latency across key digital journeys.</li>
           <li>Built and mentored a high-performing product and delivery organization, coaching PMs and teams on outcome-focused roadmaps, agile delivery, and data-driven decision-making, resulting in a 25% reduction in delivery timelines and higher stakeholder satisfaction.</li>
+          <li>Ran weekly steering forums with Senior Directors and quarterly reviews with the VP of Data, VP of Digital, and VP of Commercial Apps, driving alignment on priorities, trade-offs, and risk mitigation across business and technology.</li>
         </ul>
       </div>
 
@@ -325,10 +331,10 @@
           <div class="job-dates">Sep 2019 – Nov 2021</div>
         </div>
         <ul>
-          <li>Owned a multi-year, cross-functional portfolio of programs across MCF and Amazon Music, orchestrating roadmap delivery for customer-facing features, platform integrations, and global-scale services impacting millions of users.</li>
           <li>Directed major eCommerce and fulfillment technology initiatives, architecting a microservices layer that expanded platform interoperability with external partners including BigCommerce, while improving shipping performance, exceeding SLAs, and reducing delivery times by 30%.</li>
-          <li>Spearheaded key Amazon Music launches (Query Understanding, Voice/Visual experiences, Library &amp; Catalog migrations, Playlist Filtering, Amazon Music Videos on Fire TV), coordinating product, science, and engineering teams to deliver high-quality releases on aggressive timelines.</li>
           <li>Owned CI/CD and operational readiness programs, reducing deployment failure rates from 50% to under 10% and cutting high-severity support tickets by 10% through improved metrics, dashboards, and incident management practices.</li>
+          <li>Owned a multi-year, cross-functional portfolio of programs across MCF and Amazon Music, orchestrating roadmap delivery for customer-facing features, platform integrations, and global-scale services impacting millions of users.</li>
+          <li>Spearheaded key Amazon Music launches (Query Understanding, Voice/Visual experiences, Library &amp; Catalog migrations, Playlist Filtering, Amazon Music Videos on Fire TV), coordinating product, science, and engineering teams to deliver high-quality releases on aggressive timelines.</li>
           <li>Established and implemented program governance, metrics, and communication mechanisms adopted across multiple teams, improving transparency, reducing incidents by 25%, and driving a 25% increase in on-time launches.</li>
           <li>Founded and led the TPM Community of Practice, creating shared standards, playbooks, and forums that elevated program management maturity, cross-team collaboration, and knowledge sharing across the organization.</li>
         </ul>
@@ -379,9 +385,9 @@
           <div class="early-row"><span class="early-role">Technical Project Manager</span><span class="early-org">Cisco · Milpitas, CA</span><span class="early-dates">Feb – Apr 2012</span></div>
           <div class="early-row"><span class="early-role">Sr. ETL Architect &amp; Developer</span><span class="early-org">Genentech · South San Francisco, CA</span><span class="early-dates">May 2011 – Feb 2012</span></div>
           <div class="early-row"><span class="early-role">Sr. ETL Architect &amp; Developer</span><span class="early-org">Symantec · Mountain View, CA</span><span class="early-dates">Mar – May 2011</span></div>
-          <div class="early-row"><span class="early-role">EDW Data Architect</span><span class="early-org">Infosys — Client: Apple, Inc. · Cupertino, CA</span><span class="early-dates">Jan 2009 – Feb 2011</span></div>
-          <div class="early-row"><span class="early-role">Solution Architect, MS-BI Proof of Concept</span><span class="early-org">Infosys — Client: Microsoft · Redmond, WA</span><span class="early-dates">Aug – Dec 2008</span></div>
-          <div class="early-row"><span class="early-role">ETL Developer → Module Lead → Support Lead</span><span class="early-org">Infosys — Client: Northwestern Mutual · Milwaukee, WI</span><span class="early-dates">Nov 2003 – Aug 2008</span></div>
+          <div class="early-row"><span class="early-role">EDW Data Architect</span><span class="early-org">Apple, Inc. · Cupertino, CA</span><span class="early-dates">Jan 2009 – Feb 2011</span></div>
+          <div class="early-row"><span class="early-role">Solution Architect</span><span class="early-org">Microsoft · Redmond, WA</span><span class="early-dates">Aug – Dec 2008</span></div>
+          <div class="early-row"><span class="early-role">ETL Developer → ETL Architect</span><span class="early-org">Northwestern Mutual · Milwaukee, WI</span><span class="early-dates">Nov 2003 – Aug 2008</span></div>
           <div class="early-row"><span class="early-role">Software Developer / Project Trainee</span><span class="early-org">Mahan Computer Services / Polaris Software Lab · India</span><span class="early-dates">Aug 2002 – Nov 2003</span></div>
         </div>
       </div>
@@ -393,39 +399,7 @@
     <h2 class="section-title">Skills Summary</h2>
     <div class="skills-grid">
       <div class="skill-card">
-        <h3>Strategic &amp; Portfolio Leadership</h3>
-        <ul>
-          <li>Enterprise agile program management</li>
-          <li>Multi-year portfolio &amp; roadmap ownership</li>
-          <li>ITIL- &amp; CMMI-aligned service delivery</li>
-          <li>Governance &amp; risk/compliance frameworks</li>
-          <li>OKR/KPI definition &amp; benefits tracking</li>
-          <li>Executive steering committees &amp; board reporting</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h3>Product &amp; Platform Strategy</h3>
-        <ul>
-          <li>Digital product vision &amp; strategy</li>
-          <li>API &amp; platform strategy</li>
-          <li>Multi-product roadmap planning</li>
-          <li>Build/buy &amp; modernization decisions</li>
-          <li>Metrics-driven product lifecycle management</li>
-          <li>Large-scale SaaS &amp; data platforms</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h3>Organizational &amp; People Leadership</h3>
-        <ul>
-          <li>Leading &amp; mentoring managers, TPMs, PMs, engineers</li>
-          <li>Headcount planning, hiring &amp; succession planning</li>
-          <li>Performance management &amp; coaching</li>
-          <li>Building high-performing, cross-functional teams</li>
-          <li>Communities of practice</li>
-        </ul>
-      </div>
-      <div class="skill-card">
-        <h3>Technical &amp; Data Platforms</h3>
+        <h3>Engineering &amp; Technical Depth</h3>
         <ul>
           <li>JavaScript, Python, C++, Next.js (React)</li>
           <li>Code review fluency: Java, Node.js</li>
@@ -435,6 +409,37 @@
           <li>API/microservices architecture</li>
           <li>CI/CD pipeline design &amp; optimization</li>
           <li>Snowflake, Hadoop, Oracle, Tableau, QlikView</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Engineering Team Leadership</h3>
+        <ul>
+          <li>Hiring, mentoring &amp; growing engineers</li>
+          <li>Code review culture &amp; engineering standards</li>
+          <li>Performance management &amp; technical career growth</li>
+          <li>Building high-performing engineering teams</li>
+          <li>Communities of practice</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Platform &amp; Systems Architecture</h3>
+        <ul>
+          <li>API &amp; platform architecture</li>
+          <li>Distributed, event-driven systems design</li>
+          <li>Build/buy &amp; modernization decisions</li>
+          <li>Metrics-driven platform lifecycle management</li>
+          <li>Large-scale SaaS &amp; data platforms</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Strategic &amp; Portfolio Leadership</h3>
+        <ul>
+          <li>Enterprise agile program management</li>
+          <li>Multi-year portfolio &amp; roadmap ownership</li>
+          <li>ITIL- &amp; CMMI-aligned service delivery</li>
+          <li>Governance &amp; risk/compliance frameworks</li>
+          <li>OKR/KPI definition &amp; benefits tracking</li>
+          <li>Executive steering committees &amp; board reporting</li>
         </ul>
       </div>
       <div class="skill-card">
