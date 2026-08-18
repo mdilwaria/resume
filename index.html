@@ -89,11 +89,16 @@
   }
   .summary-block .summary-text{margin:0;}
 
-  .tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
-  .tag-chip{
-    background:#fff; border:1px solid var(--border); color:var(--navy);
-    font-size:12px; font-weight:600; letter-spacing:.01em;
-    padding:5px 13px; border-radius:999px;
+  .tag-row{
+    display:flex; flex-wrap:wrap; row-gap:5px;
+    margin-top:14px; padding-top:12px; border-top:1px solid rgba(31,56,100,0.12);
+    font-size:11px; font-weight:600; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--navy); opacity:.75; line-height:1.5;
+  }
+  .tag-chip{white-space:nowrap;}
+  .tag-chip:not(:last-child)::after{
+    content:"·"; display:inline-block; color:var(--ink-muted);
+    opacity:.6; text-transform:none; font-weight:400; margin:0 9px;
   }
 
   /* ---------- Stat tiles ---------- */
@@ -116,6 +121,7 @@
   .skill-card h3{
     font-size:13.5px; color:var(--navy); margin:0 0 10px; font-weight:700;
     padding-bottom:8px; border-bottom:1px solid var(--navy-tint);
+    line-height:1.3; min-height:2.6em;
   }
   .skill-card ul{margin:0; padding:0; list-style:none;}
   .skill-card li{
@@ -128,30 +134,37 @@
   }
 
   /* ---------- Experience timeline ---------- */
-  .timeline{position:relative; margin-top:8px;}
-  .job{
-    position:relative; padding:0 0 34px 30px; border-left:2px solid var(--border);
+  .timeline{
+    position:relative; margin-top:8px; padding-left:34px;
+    display:flex; flex-direction:column; gap:16px;
   }
-  .job:last-child{border-left:2px solid transparent; padding-bottom:0;}
+  .timeline::before{
+    content:""; position:absolute; left:12px; top:8px; bottom:8px;
+    width:2px; background:var(--border);
+  }
+  .job{
+    position:relative; box-sizing:border-box; width:100%;
+    background:rgba(255,255,255,0.28);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:20px 24px;
+  }
   .job::before{
-    content:""; position:absolute; left:-7px; top:4px;
+    content:""; position:absolute; left:-28px; top:22px;
     width:12px; height:12px; border-radius:50%;
     background:var(--navy); border:3px solid var(--page);
-    box-shadow:0 0 0 2px var(--navy);
+    box-shadow:0 0 0 1.5px var(--navy);
   }
-  .job-head{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px;}
-  .job-role{font-size:16px; font-weight:700; color:var(--ink);}
+  .job-head{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:4px 16px;}
+  .job-role{font-size:16px; font-weight:700; color:var(--ink); min-width:0; word-break:break-word;}
   .job-dates{font-size:13px; font-weight:600; color:var(--navy); white-space:nowrap;}
-  .job-org{font-size:13.5px; color:var(--ink-muted); margin-top:2px;}
-  .job ul{margin:10px 0 0; padding-left:18px;}
+  .job-org{font-size:13.5px; color:var(--ink-muted); margin-top:2px; word-break:break-word;}
+  .job ul{margin:12px 0 0; padding-left:18px;}
   .job li{font-size:14.5px; color:var(--ink-secondary); margin-bottom:6px;}
+  .job li:last-child{margin-bottom:0;}
 
-  .early-career{
-    background:var(--surface); border:1px solid var(--border); border-radius:10px;
-    padding:18px 20px; margin-top:6px;
-  }
   .early-career h3{font-size:14px; color:var(--navy); margin:0 0 12px;}
-  .early-row{display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px; padding:8px 0; border-bottom:1px dashed var(--border); font-size:13.5px;}
+  .early-row{display:flex; flex-wrap:wrap; justify-content:space-between; gap:4px 12px; padding:8px 0; border-bottom:1px dashed var(--border); font-size:13.5px;}
   .early-row:last-child{border-bottom:none;}
   .early-role{color:var(--ink); font-weight:600;}
   .early-org{color:var(--ink-muted);}
@@ -171,6 +184,14 @@
     .stat-grid{grid-template-columns:repeat(2,1fr);}
     .skills-grid{grid-template-columns:1fr;}
     .cert-grid{grid-template-columns:1fr;}
+    .timeline{padding-left:22px;}
+    .timeline::before{left:7px;}
+    .job::before{left:-18px; width:10px; height:10px;}
+    .job{padding:16px 16px;}
+    .job-role{font-size:15px;}
+    .job-dates{font-size:12.5px;}
+    .early-row{flex-direction:column; gap:2px; align-items:flex-start;}
+    .early-dates{margin-top:1px;}
   }
   @media (max-width:900px) and (min-width:721px){
     .skills-grid{grid-template-columns:repeat(2,1fr);}
@@ -227,16 +248,7 @@
         Technology and product leader with 24+ years turning complex data and platform programs into measurable business outcomes — including a <strong>$35M</strong> data lake migration and a <strong>$10M</strong> enterprise API platform built from the ground up. Trusted advisor to CTOs and VPs, with a track record of scaling high-performing global teams and driving agile transformations that lift delivery velocity <strong>20–25%</strong>. Technical roots run deep: started as a data architect, still writes code today (JavaScript, Python, C++), and has built an independent venture alongside enterprise-scale programs.
       </p>
       <div class="tag-row">
-        <span class="tag-chip">Technology &amp; Product Leadership</span>
-        <span class="tag-chip">Program &amp; Portfolio Management</span>
-        <span class="tag-chip">Data Engineering &amp; Warehousing</span>
-        <span class="tag-chip">API &amp; Microservices Strategy</span>
-        <span class="tag-chip">Enterprise Agile Transformation</span>
-        <span class="tag-chip">Offshore/Onsite Team Management</span>
-        <span class="tag-chip">Cloud (AWS · Azure)</span>
-        <span class="tag-chip">C-Level &amp; VP Advisory</span>
-        <span class="tag-chip">Digital Transformation</span>
-        <span class="tag-chip">Vendor &amp; Partner Management</span>
+        <span class="tag-chip">Technology &amp; Product Leadership</span><span class="tag-chip">Program &amp; Portfolio Management</span><span class="tag-chip">Data Engineering &amp; Warehousing</span><span class="tag-chip">API &amp; Microservices Strategy</span><span class="tag-chip">Enterprise Agile Transformation</span><span class="tag-chip">Offshore/Onsite Team Management</span>
       </div>
     </div>
   </section>
