@@ -91,11 +91,24 @@
   .stat-label{font-size:12.5px; color:var(--ink-muted); margin-top:4px; line-height:1.35;}
 
   /* ---------- Skills ---------- */
-  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:6px;}
-  .skill-card h3{
-    font-size:14px; color:var(--navy); margin:0 0 6px; font-weight:700;
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px;}
+  .skill-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:16px 18px;
   }
-  .skill-card p{font-size:14px; color:var(--ink-secondary); margin:0;}
+  .skill-card h3{
+    font-size:13.5px; color:var(--navy); margin:0 0 10px; font-weight:700;
+    padding-bottom:8px; border-bottom:1px solid var(--navy-tint);
+  }
+  .skill-card ul{margin:0; padding:0; list-style:none;}
+  .skill-card li{
+    font-size:13px; color:var(--ink-secondary); margin-bottom:6px; padding-left:14px; position:relative;
+  }
+  .skill-card li:last-child{margin-bottom:0;}
+  .skill-card li::before{
+    content:""; position:absolute; left:0; top:7px;
+    width:5px; height:5px; border-radius:50%; background:var(--navy);
+  }
 
   /* ---------- Experience timeline ---------- */
   .timeline{position:relative; margin-top:8px;}
@@ -141,6 +154,9 @@
     .stat-grid{grid-template-columns:repeat(2,1fr);}
     .skills-grid{grid-template-columns:1fr;}
     .cert-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:900px) and (min-width:721px){
+    .skills-grid{grid-template-columns:repeat(2,1fr);}
     .hero h1{font-size:28px;}
     .topnav-links{gap:14px;}
   }
@@ -179,6 +195,7 @@
     <div class="contact">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>408.300.4143</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke="none"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>mohit.dilwaria@gmail.com</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Peoria, Arizona, USA</span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>24+ years experience</span>
     </div>
   </div>
@@ -318,27 +335,66 @@
     <div class="skills-grid">
       <div class="skill-card">
         <h3>Strategic &amp; Portfolio Leadership</h3>
-        <p>Enterprise agile program management; multi-year portfolio and roadmap ownership; ITIL- and CMMI-aligned service delivery; operating model, governance, and risk/compliance framework design; OKR/KPI definition and benefits realization tracking; project and program management tooling (MS Project, Jira, Trello, Asana, Excel); executive steering committees and board-ready reporting.</p>
+        <ul>
+          <li>Enterprise agile program management</li>
+          <li>Multi-year portfolio &amp; roadmap ownership</li>
+          <li>ITIL- &amp; CMMI-aligned service delivery</li>
+          <li>Governance &amp; risk/compliance frameworks</li>
+          <li>OKR/KPI definition &amp; benefits tracking</li>
+          <li>Executive steering committees &amp; board reporting</li>
+        </ul>
       </div>
       <div class="skill-card">
         <h3>Product &amp; Platform Strategy</h3>
-        <p>Digital product vision and strategy; API and platform strategy; multi-product roadmap planning; build/buy and technology modernization decisions; metrics-driven product lifecycle management for large-scale SaaS and data platforms.</p>
+        <ul>
+          <li>Digital product vision &amp; strategy</li>
+          <li>API &amp; platform strategy</li>
+          <li>Multi-product roadmap planning</li>
+          <li>Build/buy &amp; modernization decisions</li>
+          <li>Metrics-driven product lifecycle management</li>
+          <li>Large-scale SaaS &amp; data platforms</li>
+        </ul>
       </div>
       <div class="skill-card">
         <h3>Organizational &amp; People Leadership</h3>
-        <p>Leading and mentoring managers, TPMs, PMs, and engineers; headcount planning, hiring, and succession planning; performance management and coaching-oriented talent development; building high-performing, cross-functional teams and communities of practice.</p>
+        <ul>
+          <li>Leading &amp; mentoring managers, TPMs, PMs, engineers</li>
+          <li>Headcount planning, hiring &amp; succession planning</li>
+          <li>Performance management &amp; coaching</li>
+          <li>Building high-performing, cross-functional teams</li>
+          <li>Communities of practice</li>
+        </ul>
       </div>
       <div class="skill-card">
         <h3>Technical &amp; Data Platforms</h3>
-        <p>Coding proficiency in JavaScript, Python, C++, and Next.js (React, server components, edge/runtime) for full-stack web delivery, with code review fluency in Java and Node.js; AI coding tools; RESTful and event-driven architectures; SQL and NoSQL databases and distributed data design; cloud solutions (AWS, Azure); API/microservices architecture; CI/CD pipeline design and optimization; enterprise data warehousing and analytics (Snowflake, Hadoop, Oracle); BI and reporting (Tableau, QlikView); ETL/data engineering and performance tuning.</p>
+        <ul>
+          <li>JavaScript, Python, C++, Next.js (React)</li>
+          <li>Code review fluency: Java, Node.js</li>
+          <li>RESTful &amp; event-driven architectures</li>
+          <li>SQL/NoSQL &amp; distributed data design</li>
+          <li>Cloud: AWS, Azure</li>
+          <li>API/microservices architecture</li>
+          <li>CI/CD pipeline design &amp; optimization</li>
+          <li>Snowflake, Hadoop, Oracle, Tableau, QlikView</li>
+        </ul>
       </div>
       <div class="skill-card">
         <h3>Stakeholder, Financial &amp; Executive Engagement</h3>
-        <p>C-level and VP stakeholder management; executive communication and storytelling; vendor and partner management; budget ownership and financial planning/forecasting; ROI and business case development.</p>
+        <ul>
+          <li>C-level &amp; VP stakeholder management</li>
+          <li>Executive communication &amp; storytelling</li>
+          <li>Vendor &amp; partner management</li>
+          <li>Budget ownership &amp; financial forecasting</li>
+          <li>ROI &amp; business case development</li>
+        </ul>
       </div>
       <div class="skill-card">
         <h3>Vendor &amp; Offshore Delivery</h3>
-        <p>Managed technology vendor relationships and offshore delivery teams throughout a 24-year career, including Infosys and Saama offshore teams and external technology partners such as BigCommerce and Nielsen.</p>
+        <ul>
+          <li>24 years managing technology vendor relationships</li>
+          <li>Offshore delivery teams: Infosys, Saama</li>
+          <li>External partners: BigCommerce, Nielsen</li>
+        </ul>
       </div>
     </div>
   </section>
