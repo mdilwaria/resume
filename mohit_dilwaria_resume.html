@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohit Dilwaria — Resume</title>
+<style>
+  :root{
+    --navy:#1F3864;
+    --navy-dark:#152845;
+    --navy-tint:#EAF0F8;
+    --ink:#1A1A1A;
+    --ink-secondary:#4A4A4A;
+    --ink-muted:#767676;
+    --border:#E1E5EC;
+    --surface:#FFFFFF;
+    --page:#F5F7FA;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Inter","Segoe UI",system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--page);
+    line-height:1.55;
+  }
+  a{color:var(--navy);}
+
+  /* ---------- Top nav ---------- */
+  .topnav{
+    position:sticky; top:0; z-index:20;
+    background:rgba(255,255,255,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);
+  }
+  .topnav-inner{
+    max-width:960px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 24px;
+  }
+  .topnav-name{font-weight:700; color:var(--navy); font-size:15px; letter-spacing:.02em;}
+  .topnav-links{display:flex; gap:22px;}
+  .topnav-links a{
+    font-size:13px; font-weight:600; color:var(--ink-secondary);
+    text-decoration:none; text-transform:uppercase; letter-spacing:.04em;
+  }
+  .topnav-links a:hover{color:var(--navy);}
+  .print-btn{
+    border:1px solid var(--navy); color:var(--navy); background:transparent;
+    padding:6px 14px; border-radius:6px; font-size:13px; font-weight:600;
+    cursor:pointer; font-family:inherit;
+  }
+  .print-btn:hover{background:var(--navy); color:#fff;}
+
+  /* ---------- Header / hero ---------- */
+  header.hero{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+    color:#fff;
+    padding:56px 24px 44px;
+  }
+  .hero-inner{max-width:960px; margin:0 auto;}
+  .hero h1{
+    margin:0 0 6px; font-size:36px; font-weight:700; letter-spacing:.01em;
+  }
+  .hero .title{font-size:17px; font-weight:500; color:#CBD8ED; margin:0 0 18px;}
+  .hero .contact{display:flex; flex-wrap:wrap; gap:18px; font-size:14px; color:#DCE6F5;}
+  .hero .contact span{display:flex; align-items:center; gap:7px;}
+  .hero .contact svg{width:15px; height:15px; opacity:.85;}
+
+  /* ---------- Sections ---------- */
+  main{max-width:960px; margin:0 auto; padding:0 24px 80px;}
+  section{padding-top:48px;}
+  section:first-of-type{padding-top:40px;}
+  h2.section-title{
+    font-size:12px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--navy); margin:0 0 18px;
+    padding-bottom:10px; border-bottom:2px solid var(--navy-tint);
+  }
+  .summary-text{font-size:15.5px; color:var(--ink-secondary); max-width:820px;}
+  .summary-text strong{color:var(--navy); font-weight:700;}
+
+  .summary-block{
+    border-left:4px solid var(--navy);
+    background:var(--navy-tint);
+    border-radius:0 10px 10px 0;
+    padding:20px 24px;
+    margin-top:4px;
+  }
+  .summary-block .summary-text{margin:0;}
+
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .tag-chip{
+    background:#fff; border:1px solid var(--border); color:var(--navy);
+    font-size:12px; font-weight:600; letter-spacing:.01em;
+    padding:5px 13px; border-radius:999px;
+  }
+
+  /* ---------- Stat tiles ---------- */
+  .stat-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:22px;
+  }
+  .stat-tile{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:18px 16px;
+  }
+  .stat-value{font-size:26px; font-weight:700; color:var(--navy); letter-spacing:-.01em;}
+  .stat-label{font-size:12.5px; color:var(--ink-muted); margin-top:4px; line-height:1.35;}
+
+  /* ---------- Skills ---------- */
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px;}
+  .skill-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:16px 18px;
+  }
+  .skill-card h3{
+    font-size:13.5px; color:var(--navy); margin:0 0 10px; font-weight:700;
+    padding-bottom:8px; border-bottom:1px solid var(--navy-tint);
+  }
+  .skill-card ul{margin:0; padding:0; list-style:none;}
+  .skill-card li{
+    font-size:13px; color:var(--ink-secondary); margin-bottom:6px; padding-left:14px; position:relative;
+  }
+  .skill-card li:last-child{margin-bottom:0;}
+  .skill-card li::before{
+    content:""; position:absolute; left:0; top:7px;
+    width:5px; height:5px; border-radius:50%; background:var(--navy);
+  }
+
+  /* ---------- Experience timeline ---------- */
+  .timeline{position:relative; margin-top:8px;}
+  .job{
+    position:relative; padding:0 0 34px 30px; border-left:2px solid var(--border);
+  }
+  .job:last-child{border-left:2px solid transparent; padding-bottom:0;}
+  .job::before{
+    content:""; position:absolute; left:-7px; top:4px;
+    width:12px; height:12px; border-radius:50%;
+    background:var(--navy); border:3px solid var(--page);
+    box-shadow:0 0 0 2px var(--navy);
+  }
+  .job-head{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px;}
+  .job-role{font-size:16px; font-weight:700; color:var(--ink);}
+  .job-dates{font-size:13px; font-weight:600; color:var(--navy); white-space:nowrap;}
+  .job-org{font-size:13.5px; color:var(--ink-muted); margin-top:2px;}
+  .job ul{margin:10px 0 0; padding-left:18px;}
+  .job li{font-size:14.5px; color:var(--ink-secondary); margin-bottom:6px;}
+
+  .early-career{
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:18px 20px; margin-top:6px;
+  }
+  .early-career h3{font-size:14px; color:var(--navy); margin:0 0 12px;}
+  .early-row{display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px; padding:8px 0; border-bottom:1px dashed var(--border); font-size:13.5px;}
+  .early-row:last-child{border-bottom:none;}
+  .early-role{color:var(--ink); font-weight:600;}
+  .early-org{color:var(--ink-muted);}
+  .early-dates{color:var(--ink-muted); white-space:nowrap;}
+
+  /* ---------- Certifications ---------- */
+  .cert-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px 24px; margin-top:6px;}
+  .cert-item{display:flex; gap:10px; align-items:flex-start; font-size:14.5px; color:var(--ink-secondary);}
+  .cert-dot{width:6px; height:6px; border-radius:50%; background:var(--navy); margin-top:8px; flex:none;}
+
+  footer{
+    text-align:center; padding:26px 24px 40px; color:var(--ink-muted); font-size:12.5px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:720px){
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .skills-grid{grid-template-columns:1fr;}
+    .cert-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:900px) and (min-width:721px){
+    .skills-grid{grid-template-columns:repeat(2,1fr);}
+    .hero h1{font-size:28px;}
+    .topnav-links{gap:14px;}
+  }
+
+  /* ---------- Print ---------- */
+  @media print{
+    .topnav{display:none;}
+    body{background:#fff;}
+    header.hero{background:var(--navy); -webkit-print-color-adjust:exact; print-color-adjust:exact; padding:28px 0;}
+    section{padding-top:22px;}
+    .stat-tile{break-inside:avoid;}
+    .job{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="topnav-name">MOHIT DILWARIA</div>
+    <div class="topnav-links">
+      <a href="#summary">Summary</a>
+      <a href="#highlights">Highlights</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+    </div>
+    <button class="print-btn" onclick="window.print()">Download / Print</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <h1>Mohit Dilwaria</h1>
+    <p class="title">Technology &amp; Product Leader — Program Management, Data &amp; API Platforms</p>
+    <div class="contact">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>408.300.4143</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke="none"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>mohit.dilwaria@gmail.com</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Peoria, Arizona, USA</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>24+ years experience</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="summary">
+    <h2 class="section-title">Professional Summary</h2>
+    <div class="summary-block">
+      <p class="summary-text">
+        Technology and product leader with 24+ years turning complex data and platform programs into measurable business outcomes — including a <strong>$35M</strong> data lake migration and a <strong>$10M</strong> enterprise API platform built from the ground up. Trusted advisor to CTOs and VPs, with a track record of scaling high-performing global teams and driving agile transformations that lift delivery velocity <strong>20–25%</strong>. Technical roots run deep: started as a data architect, still writes code today (JavaScript, Python, C++), and has built an independent venture alongside enterprise-scale programs.
+      </p>
+      <div class="tag-row">
+        <span class="tag-chip">Technology &amp; Product Leadership</span>
+        <span class="tag-chip">Program &amp; Portfolio Management</span>
+        <span class="tag-chip">Data Engineering &amp; Warehousing</span>
+        <span class="tag-chip">API &amp; Microservices Strategy</span>
+        <span class="tag-chip">Enterprise Agile Transformation</span>
+        <span class="tag-chip">Offshore/Onsite Team Management</span>
+        <span class="tag-chip">Cloud (AWS · Azure)</span>
+        <span class="tag-chip">C-Level &amp; VP Advisory</span>
+        <span class="tag-chip">Digital Transformation</span>
+        <span class="tag-chip">Vendor &amp; Partner Management</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="highlights">
+    <h2 class="section-title">Career Highlights</h2>
+    <div class="stat-grid">
+      <div class="stat-tile"><div class="stat-value">$35M</div><div class="stat-label">Saved over 3 years leading a Hadoop Data Lake migration at CSAA ($50M projected over 5)</div></div>
+      <div class="stat-tile"><div class="stat-value">$10M</div><div class="stat-label">Annual API platform portfolio owned at CSAA, leading 9 direct + 30+ influenced</div></div>
+      <div class="stat-tile"><div class="stat-value">$8–10M</div><div class="stat-label">Annual maintenance saved by decommissioning a legacy data warehouse at CSAA</div></div>
+      <div class="stat-tile"><div class="stat-value">93.75%</div><div class="stat-label">Faster chart processing automating Apple's Official iTunes Charts (4 hrs → 15 min)</div></div>
+      <div class="stat-tile"><div class="stat-value">50%→&lt;10%</div><div class="stat-label">Amazon deployment failure rate cut through CI/CD &amp; operational readiness</div></div>
+      <div class="stat-tile"><div class="stat-value">25%</div><div class="stat-label">Reduction in incident rates and improvement in delivery timelines via API governance at CSAA</div></div>
+      <div class="stat-tile"><div class="stat-value">20–25%</div><div class="stat-label">Delivery velocity improvement from enterprise agile transformations</div></div>
+      <div class="stat-tile"><div class="stat-value">24+ yrs</div><div class="stat-label">Spanning data architecture, program management, and product/platform leadership</div></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2 class="section-title">Professional Experience</h2>
+    <div class="timeline">
+
+      <div class="job">
+        <div class="job-head">
+          <div><div class="job-role">Founder &amp; CEO — Holistic Wellness &amp; Executive Resilience Coaching, Corporate Consultant</div>
+          <div class="job-org">Prana Awakening, LLC · Peoria, AZ</div></div>
+          <div class="job-dates">May 2024 – Present</div>
+        </div>
+        <ul>
+          <li>Founded and scaled an independent coaching practice from the ground up, owning business strategy, marketing, go-to-market, and client relationships end-to-end — the full P&amp;L of the business.</li>
+          <li>Designed and launched structured program offerings (breathwork, mindfulness, guided meditation) for tech professionals, entrepreneurs, and caregivers, running recurring cohorts alongside tailored 1:1 engagements.</li>
+          <li>Built and grew an engaged client community through workshops and masterclasses, driving retention and referrals with zero corporate marketing budget or support infrastructure.</li>
+          <li>Sourced, negotiated, and managed strategic partnerships with therapists and wellness practitioners, coordinating referrals and joint programming.</li>
+          <li>Applied executive coaching, facilitation, and storytelling skills built over 20+ years in corporate leadership to help clients navigate ambiguity and lead more effectively.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div><div class="job-role">Sr. Manager, Digital Product &amp; Technology, API Platform Management</div>
+          <div class="job-org">Saama Technologies — Client: California State Automobile Association (CSAA) · Glendale, AZ</div></div>
+          <div class="job-dates">Nov 2021 – May 2024</div>
+        </div>
+        <ul>
+          <li>Owned a $10M annual portfolio for the enterprise API platform, leading a blended onshore/offshore delivery team of 3 Product Managers, 1 Scrum Master, 5 engineers and 1 architect directly, and influencing 5 Product Managers, 25+ engineers and 5 architects across MyPolicy, Claims, and MyQuote products.</li>
+          <li>Defined the multi-year API platform vision, operating model, and standards for CSAA, built on RESTful and event-driven architectures with SQL and NoSQL distributed data design, integrating Claims, Policy, Digital, UBI, and Commercial lines of business into a unified enterprise API platform.</li>
+          <li>Led strategic planning and execution of API product roadmaps and RESTful services, enabling faster partner onboarding and delivering a 20% improvement in efficiency and a 50% reduction in data latency across key digital journeys.</li>
+          <li>Ran weekly steering forums with Senior Directors and quarterly reviews with the VP of Data, VP of Digital, and VP of Commercial Apps, driving alignment on priorities, trade-offs, and risk mitigation across business and technology.</li>
+          <li>Established API governance, standards, and KPI frameworks adopted across multiple business units, improving platform reliability, reducing incident rates by 25%, and streamlining release cycles by 20%.</li>
+          <li>Built and mentored a high-performing product and delivery organization, coaching PMs and teams on outcome-focused roadmaps, agile delivery, and data-driven decision-making, resulting in a 25% reduction in delivery timelines and higher stakeholder satisfaction.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div><div class="job-role">Sr. Technical Program Manager</div>
+          <div class="job-org">Amazon.com — Multi-Channel Fulfillment (MCF) &amp; Amazon Music · Tempe, AZ / San Francisco, CA</div></div>
+          <div class="job-dates">Sep 2019 – Nov 2021</div>
+        </div>
+        <ul>
+          <li>Owned a multi-year, cross-functional portfolio of programs across MCF and Amazon Music, orchestrating roadmap delivery for customer-facing features, platform integrations, and global-scale services impacting millions of users.</li>
+          <li>Directed major eCommerce and fulfillment technology initiatives, architecting a microservices layer that expanded platform interoperability with external partners including BigCommerce, while improving shipping performance, exceeding SLAs, and reducing delivery times by 30%.</li>
+          <li>Spearheaded key Amazon Music launches (Query Understanding, Voice/Visual experiences, Library &amp; Catalog migrations, Playlist Filtering, Amazon Music Videos on Fire TV), coordinating product, science, and engineering teams to deliver high-quality releases on aggressive timelines.</li>
+          <li>Owned CI/CD and operational readiness programs, reducing deployment failure rates from 50% to under 10% and cutting high-severity support tickets by 10% through improved metrics, dashboards, and incident management practices.</li>
+          <li>Established and implemented program governance, metrics, and communication mechanisms adopted across multiple teams, improving transparency, reducing incidents by 25%, and driving a 25% increase in on-time launches.</li>
+          <li>Founded and led the TPM Community of Practice, creating shared standards, playbooks, and forums that elevated program management maturity, cross-team collaboration, and knowledge sharing across the organization.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div><div class="job-role">Sr. Technical Program Manager</div>
+          <div class="job-org">Saama Technologies — Client: Genentech · South San Francisco, CA</div></div>
+          <div class="job-dates">Apr 2019 – Sep 2019</div>
+        </div>
+        <ul>
+          <li>Directed the enterprise-wide evaluation and adoption of Snowflake as the cloud data warehouse, leading end-to-end migration from Oracle and Hadoop and establishing Snowflake as the analytics standard for key business domains.</li>
+          <li>Oversaw design and deployment of Tableau and QlikView dashboards on Snowflake data, enabling near real-time insights and faster, data-driven decisions for senior leaders.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div><div class="job-role">Sr. Engineering Manager</div>
+          <div class="job-org">Saama Technologies — Client: California State Automobile Association (CSAA) · Glendale, AZ</div></div>
+          <div class="job-dates">Oct 2013 – Mar 2019</div>
+        </div>
+        <ul>
+          <li>Directed the Claims Analytics &amp; Reporting (CAR) transformation, migrating legacy claims data to Guidewire and building an enterprise data warehouse, delivering the multi-year program 15% under budget and on time.</li>
+          <li>Led large-scale systems modernization, consolidating 3 claims and 11 policy applications, driving a Hadoop Data Lake migration that saved $35M over three years and $50M over five years, and deploying an elastic search UI that improved operational efficiency by 20%.</li>
+          <li>Decommissioned the legacy Marketing Analytics Data Warehouse, insourcing 15 predictive models and reducing annual maintenance costs by $8–10M, while improving analytic capabilities and long-term enterprise scalability.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <div><div class="job-role">Technical Product Manager</div>
+          <div class="job-org">Saama Technologies — Client: Apple, Inc. · Cupertino, CA</div></div>
+          <div class="job-dates">Apr 2012 – Sep 2013</div>
+        </div>
+        <ul>
+          <li>Directed Official iTunes Charts for Music and Apps in partnership with Nielsen, leading cross-functional teams and automating manual chart processes, improving accuracy by 50% and increasing creation efficiency by 93.75% (reducing processing from 4 hours to 15 minutes).</li>
+          <li>Enhanced partner communication, reducing query resolution times by 25%, and delivered timely, audited voting results for NBC's "The Voice," raising customer satisfaction by 30%.</li>
+          <li>Implemented rapid delivery models and presented product roadmaps to executives, reducing project initiation time by 20% and driving a 15% increase in leadership confidence.</li>
+          <li>Designed advanced analytics and reporting tools, increasing user satisfaction by 25% and automation efficiency by 20% through business process optimization.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="early-career">
+          <h3>Early Career — Data &amp; Solutions Architecture (2002 – 2013)</h3>
+          <div class="early-row"><span class="early-role">Technical Project Manager</span><span class="early-org">Cisco · Milpitas, CA</span><span class="early-dates">Feb – Apr 2012</span></div>
+          <div class="early-row"><span class="early-role">Sr. ETL Architect &amp; Developer</span><span class="early-org">Genentech · South San Francisco, CA</span><span class="early-dates">May 2011 – Feb 2012</span></div>
+          <div class="early-row"><span class="early-role">Sr. ETL Architect &amp; Developer</span><span class="early-org">Symantec · Mountain View, CA</span><span class="early-dates">Mar – May 2011</span></div>
+          <div class="early-row"><span class="early-role">EDW Data Architect</span><span class="early-org">Infosys — Client: Apple, Inc. · Cupertino, CA</span><span class="early-dates">Jan 2009 – Feb 2011</span></div>
+          <div class="early-row"><span class="early-role">Solution Architect, MS-BI Proof of Concept</span><span class="early-org">Infosys — Client: Microsoft · Redmond, WA</span><span class="early-dates">Aug – Dec 2008</span></div>
+          <div class="early-row"><span class="early-role">ETL Developer → Module Lead → Support Lead</span><span class="early-org">Infosys — Client: Northwestern Mutual · Milwaukee, WI</span><span class="early-dates">Nov 2003 – Aug 2008</span></div>
+          <div class="early-row"><span class="early-role">Software Developer / Project Trainee</span><span class="early-org">Mahan Computer Services / Polaris Software Lab · India</span><span class="early-dates">Aug 2002 – Nov 2003</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills Summary</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>Strategic &amp; Portfolio Leadership</h3>
+        <ul>
+          <li>Enterprise agile program management</li>
+          <li>Multi-year portfolio &amp; roadmap ownership</li>
+          <li>ITIL- &amp; CMMI-aligned service delivery</li>
+          <li>Governance &amp; risk/compliance frameworks</li>
+          <li>OKR/KPI definition &amp; benefits tracking</li>
+          <li>Executive steering committees &amp; board reporting</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Product &amp; Platform Strategy</h3>
+        <ul>
+          <li>Digital product vision &amp; strategy</li>
+          <li>API &amp; platform strategy</li>
+          <li>Multi-product roadmap planning</li>
+          <li>Build/buy &amp; modernization decisions</li>
+          <li>Metrics-driven product lifecycle management</li>
+          <li>Large-scale SaaS &amp; data platforms</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Organizational &amp; People Leadership</h3>
+        <ul>
+          <li>Leading &amp; mentoring managers, TPMs, PMs, engineers</li>
+          <li>Headcount planning, hiring &amp; succession planning</li>
+          <li>Performance management &amp; coaching</li>
+          <li>Building high-performing, cross-functional teams</li>
+          <li>Communities of practice</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Technical &amp; Data Platforms</h3>
+        <ul>
+          <li>JavaScript, Python, C++, Next.js (React)</li>
+          <li>Code review fluency: Java, Node.js</li>
+          <li>RESTful &amp; event-driven architectures</li>
+          <li>SQL/NoSQL &amp; distributed data design</li>
+          <li>Cloud: AWS, Azure</li>
+          <li>API/microservices architecture</li>
+          <li>CI/CD pipeline design &amp; optimization</li>
+          <li>Snowflake, Hadoop, Oracle, Tableau, QlikView</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Stakeholder, Financial &amp; Executive Engagement</h3>
+        <ul>
+          <li>C-level &amp; VP stakeholder management</li>
+          <li>Executive communication &amp; storytelling</li>
+          <li>Vendor &amp; partner management</li>
+          <li>Budget ownership &amp; financial forecasting</li>
+          <li>ROI &amp; business case development</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <h3>Vendor &amp; Offshore Delivery</h3>
+        <ul>
+          <li>24 years managing technology vendor relationships</li>
+          <li>Offshore delivery teams: Infosys, Saama</li>
+          <li>External partners: BigCommerce, Nielsen</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2 class="section-title">Certifications &amp; Education</h2>
+    <div class="cert-grid">
+      <div class="cert-item"><span class="cert-dot"></span>Machine Learning Foundations for Product Managers — Duke University</div>
+      <div class="cert-item"><span class="cert-dot"></span>The Intersection of Leadership and Innovation — MIT</div>
+      <div class="cert-item"><span class="cert-dot"></span>Certified SAFe® 5 Product Owner/Product Manager — Scaled Agile</div>
+      <div class="cert-item"><span class="cert-dot"></span>Certified Scrum Product Owner (CSPO) — Scrum Alliance</div>
+      <div class="cert-item"><span class="cert-dot"></span>PMP (Project Management Professional)</div>
+      <div class="cert-item"><span class="cert-dot"></span>MCA (Masters in Computer Applications) — India</div>
+      <div class="cert-item"><span class="cert-dot"></span>B.Sc. (Bachelors in Computer Science) — India</div>
+    </div>
+  </section>
+
+</main>
+
+<footer>Mohit Dilwaria &middot; 408.300.4143 &middot; mohit.dilwaria@gmail.com</footer>
+
+</body>
+</html>
